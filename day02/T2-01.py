@@ -48,3 +48,23 @@ print(knr.score(test_input, test_target)) # 모델 평가 # 0.9929281790592219 #
 
 print(test_input)  # 길이 [ 8.4] [18. ] [27.5] [21.3] [22.5]
 print(knr.predict(test_input)) # 무게 예측 [  61.4   78.   248.   117.   139.   847.   311.4  183.4  847.   112. ]
+
+# [6] k최근접이웃 회귀는 이웃의 평균으로 예측한다. 하이퍼라미터(k) 조절
+# k=이웃 개수 정하기
+knr=KNeighborsRegressor()
+
+# 임의의 길이 생성, 임의의 물고기 길이 5부터 45까지 생성
+x=np.arange(5,45).reshape(-1,1)
+print(x) # 5~44까지의 임의의값
+
+for k in [1,3,5,10]: # 이웃 개수를 4가지(1,3,5,10) 모델 학습
+    knr.n_neighbors=k # 현재 모델의 이웃 개수 대입
+    knr.fit(train_input, train_target) # 총 4번 학습 예정
+    print(knr.score(test_input, test_target)) # 총 4번 학습 평가
+    pred=knr.predict(x) # 임의의 값으로 예측, x(물고기 길이)
+    print(pred) # 총 45개의 물고기 길이의 몸무게 예측
+    
+    # 시각화
+    plt.scatter(train_input, train_target)
+    plt.plot(x,pred) # plot (선차트 이면서 회귀(예측)선) # x=길이 # pred=몸무게
+    plt.show()
