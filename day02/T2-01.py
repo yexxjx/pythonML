@@ -57,7 +57,7 @@ knr=KNeighborsRegressor()
 x=np.arange(5,45).reshape(-1,1)
 print(x) # 5~44까지의 임의의값
 
-for k in [1,3,5,10]: # 이웃 개수를 4가지(1,3,5,10) 모델 학습
+for k in [1,3,5,10,30]: # 이웃 개수를 4가지(1,3,5,10) 모델 학습
     knr.n_neighbors=k # 현재 모델의 이웃 개수 대입
     knr.fit(train_input, train_target) # 총 4번 학습 예정
     print(knr.score(test_input, test_target)) # 총 4번 학습 평가
@@ -66,5 +66,6 @@ for k in [1,3,5,10]: # 이웃 개수를 4가지(1,3,5,10) 모델 학습
 
     # 시각화
     plt.scatter(train_input, train_target)
-    plt.plot(x,pred) # plot (선차트 이면서 회귀(예측)선) # x=길이 # pred=몸무게
-    plt.show()# [1] Fish.csv 가져오기
+    plt.plot(x,pred) # plot (선차트이면서 회귀(예측)선) # x=길이 # pred=몸무게
+    plt.title(f"k={k}")
+    plt.show()
