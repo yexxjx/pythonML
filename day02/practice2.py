@@ -14,8 +14,6 @@ print(target_iris)
 
 # [단계 3] 특성 데이터 추출
 # 각 품종의 꽃잎 길이(PetalLengthCm)와 꽃잎 너비(PetalWidthCm)를 추출하세요.
-
-
 # [단계 4] 학습 데이터 구성
 # 꽃잎 길이와 꽃잎 너비를 이용하여  [길이, 너비] 형태의 2차원 리스트 iris_data를 생성하세요.
 import numpy as np
