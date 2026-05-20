@@ -1,12 +1,12 @@
-# 파이썬 통신 주고 받을 수 있는 FASTAPI
+# 파이썬 통신 주고 받을수 있는 FASTAPI 
 from fastapi import FastAPI
 import uvicorn
 
-app=FastAPI()
+app = FastAPI() 
 
-if __name__=="__main__":
-    uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
+if __name__ == "__main__" :
+    uvicorn.run( 'app:app' , host='127.0.0.1' , port = 8000 , reload=True )
 
-# 컨트롤러 연결하는 라우터
+# 컨트롤러 연결 하는 라우터
 import controller
-app.include_router(controller.router)
+app.include_router( controller.router )
