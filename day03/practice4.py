@@ -22,7 +22,7 @@ train_input, test_input, train_target, test_target=train_test_split(iris_length,
 # [단계 3] 데이터 차원 변환 (Reshape)
 # 사이킷런 모델 학습을 위해 1차원 배열인 train_input과 test_input을 [개수, 1] 형태의 2차원 배열로 변환하세요.
 train_input=train_input.reshape(-1,1)
-test_input=train_input.reshape(-1,1)
+test_input=test_input.reshape(-1,1)
 
 # [단계 4] 단순 선형 회귀(Linear Regression) 모델 학습 및 평가
 # 1) LinearRegression 객체를 생성하고 변환된 train_input 데이터로 모델을 학습하세요.
@@ -31,7 +31,8 @@ test_input=train_input.reshape(-1,1)
 from sklearn.linear_model import LinearRegression
 lr=LinearRegression()
 lr.fit(train_input, train_target)
-print(lr.predict([[]])) # ========== 수정
+print(lr.score(train_input, train_target))
+print(lr.score(test_input, test_target))
 
 print(lr.coef_)
 print(lr.intercept_)
@@ -47,7 +48,8 @@ test_poly=np.column_stack((test_input**2, test_input))
 # 1) LinearRegression 객체를 새로 생성하고 train_poly 데이터로 모델을 학습하세요.
 # 2) 학습된 다항 회귀 모델의 훈련 세트와 테스트 세트의 결정계수(R^2)를 각각 출력하여 단순 선형 회귀와 비교하세요.
 lr.fit(train_poly, train_target)
-print(lr.predict([[50**2, 50]]))
+print(lr.score(train_poly,train_target))
+print(lr.score(test_poly, test_target))
 
 # [단계 7] 다항 회귀 모델을 통한 임의의 값 예측
 # 학습된 다항 회귀 모델을 사용하여 꽃받침 길이가 4.0일 때와 6.0일 때의 꽃받침 너비를 각각 예측하여 출력하세요.
@@ -66,6 +68,7 @@ plt.scatter(train_input, train_target)
 plt.plot(point, lr.predict(point_poly))
 
 plt.scatter(test_input, test_target)
+plt.show()
 print(lr.score(test_poly, test_target))
 
 # [단계 9] 단순 선형 회귀(1차 방정식)와 비교했을 때, 특성을 제곱한 다항 회귀(2차 방정식)가 가지는 수학적/표현적 장점을 주석으로 서술하시오.
