@@ -28,8 +28,8 @@ print(sc.predict(test_scaled[:3]))
 # [4] 최고 정확도(Score) 선정 , *0.90 이상 찾기* 
 sc=SGDClassifier(loss="hinge",max_iter=100, random_state=42, alpha=0.001)
 sc.fit(train_scaled, train_target)
-print(sc.score(train_scaled, train_target)) # 0.9066666666666666
-print(sc.score(test_scaled, test_target)) # 0.902
+print(sc.score(train_scaled, train_target)) # 0.9075
+print(sc.score(test_scaled, test_target)) # 0.903
 
 # [5] 신규 학생 데이터 취업 예측 (추론 함수 구현 및 검증)
 # 구현된 모델에 아래 두 가지 샘플 데이터를 입력하여  취업 성공(Placed)과 실패(Not Placed)를 올바르게 분류해내는지 최종 검증하시오.
