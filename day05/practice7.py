@@ -35,7 +35,7 @@ print(lr.score(test_scaled, test_target)) # 0.9736842105263158
 # [단계 7] 테스트 세트의 앞선 5개 샘플 데이터에 대해 모델이 예측한 클래스를 출력하세요.
 import numpy as np
 from scipy.special import softmax
+print(lr.predict(test_scaled[:5]))
 decision=lr.decision_function(test_scaled[:5])
-print(softmax(decision))
 print(np.round(softmax(decision),decimals=3))
-print(lr.classes_)
+print(lr.classes_) # ['Iris-virginica' 'Iris-virginica' 'Iris-versicolor' 'Iris-versicolor' 'Iris-versicolor']
