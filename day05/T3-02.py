@@ -66,3 +66,18 @@ import matplotlib.pyplot as plt
 plt.plot(train_score) # 
 plt.plot(test_score) # 
 plt.show() 
+
+# [5] hinge / SVM(서포트 백터 머신)
+# alpha=0.0001: 기본값(0.0001), 힌지 함수는 경계면(애매,아슬)에 있는 자료들을 찾는 기준
+sc=SGDClassifier(loss="hinge",max_iter=100, random_state=42, alpha=0.001)
+sc.fit(train_scaled,train_target)
+print(sc.score(train_scaled, train_target)) # 0.9159663865546218
+print(sc.score(test_scaled, test_target)) # 0.925
+
+# 로지스틱 회귀: 확률 이용한 분류("log_loss")
+# SGD(확률 경사하강법/미니배치): 
+# 경사하강법: 손실(예측과 정답 오차) 0에 가깝게 처리하기 위한 반복 계싼
+# loss="log_loss"
+    # 도미 확률이 51%일 때 기울기(가중치)의 절편으로 수없이 조정하여 확률 100% 만드는 방법 (경사 하강법)
+# loss="hinge"
+    # 전체 데이터가 아닌 도미 확률이 50%, 0인 지점이 애매/아슬한 (경계선) 자료만 가지고 확률 조정하는 방법 (경사 하강법)
